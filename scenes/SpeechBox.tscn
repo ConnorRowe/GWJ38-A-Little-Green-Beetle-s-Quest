@@ -1,0 +1,243 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://fonts/small_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://textures/nineslice.png" type="Texture" id=3]
+[ext_resource path="res://scripts/SpeechBox.cs" type="Script" id=4]
+[ext_resource path="res://textures/spacebar_speach_prompt.png" type="Texture" id=5]
+[ext_resource path="res://sound/blip.wav" type="AudioStream" id=6]
+[ext_resource path="res://scripts/QuestObject.cs" type="Script" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 14, 0, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 28, 0, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 10, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 14, 10, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 28, 10, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 20, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 14, 20, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 28, 20, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 30, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 14, 30, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 28, 30, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 40, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 14, 40, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 28, 40, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 50, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 5 )
+region = Rect2( 14, 50, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 5 )
+region = Rect2( 28, 50, 14, 10 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 18.0
+} ]
+
+[sub_resource type="AudioStreamRandomPitch" id=21]
+audio_stream = ExtResource( 6 )
+random_pitch = 1.2
+
+[node name="SpeechBox" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_right = -343.0
+margin_bottom = -241.0
+rect_pivot_offset = Vector2( 68, 0 )
+mouse_filter = 2
+custom_constants/separation = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeakerPanel" type="PanelContainer" parent="."]
+margin_right = 148.0
+margin_bottom = 16.0
+mouse_filter = 2
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeakerPanel"]
+margin_right = 148.0
+margin_bottom = 16.0
+mouse_filter = 2
+custom_constants/margin_top = 0
+custom_constants/margin_left = 15
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SpeakerPanel/MarginContainer"]
+margin_left = 15.0
+margin_right = 148.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 16 )
+patch_margin_left = 17
+patch_margin_right = 17
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeakerPanel/MarginContainer"]
+margin_left = 15.0
+margin_right = 148.0
+margin_bottom = 16.0
+mouse_filter = 2
+custom_constants/margin_right = 15
+custom_constants/margin_top = 0
+custom_constants/margin_left = 14
+custom_constants/margin_bottom = -4
+
+[node name="SpeakerName" type="Label" parent="SpeakerPanel/MarginContainer/MarginContainer"]
+margin_left = 14.0
+margin_top = 2.0
+margin_right = 118.0
+margin_bottom = 18.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.921569, 0.929412, 0.913725, 1 )
+text = "Character Name:"
+
+[node name="TextPanel" type="PanelContainer" parent="."]
+margin_top = 16.0
+margin_right = 148.0
+margin_bottom = 46.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextPanel"]
+margin_right = 148.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TextPanel"]
+margin_right = 148.0
+margin_bottom = 30.0
+mouse_filter = 2
+custom_constants/margin_right = 12
+custom_constants/margin_top = 4
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SpeechText" type="RichTextLabel" parent="TextPanel/MarginContainer"]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 136.0
+margin_bottom = 25.0
+mouse_filter = 2
+theme = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0.780392, 0.811765, 0.8, 1 )
+bbcode_enabled = true
+bbcode_text = " Lorem ipsum dolor sit amet, [shake rate=10 level=8]consectetur adipiscing elit.[/shake] Vivamus tincidunt leo id dapibus sagittis. Donec cursus convallis varius. Pellentesque consectetur, libero at tempus vestibulum, orci neque condimentum purus, sed ullamcorper nisl lectus sed purus."
+text = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt leo id dapibus sagittis. Donec cursus convallis varius. Pellentesque consectetur, libero at tempus vestibulum, orci neque condimentum purus, sed ullamcorper nisl lectus sed purus."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPrompt" type="CenterContainer" parent="TextPanel/MarginContainer/SpeechText"]
+modulate = Color( 0.94, 0.94, 0.94, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -1.0
+margin_right = -12.0
+margin_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TextPanel/MarginContainer/SpeechText/ButtonPrompt"]
+position = Vector2( 0, -7 )
+frames = SubResource( 20 )
+frame = 9
+playing = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="BlipPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 21 )
+volume_db = -20.232
+bus = "SFX"
+
+[node name="QuestObject" type="Node2D" parent="."]
+script = ExtResource( 7 )

@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://textures/elemental fruit2.png" type="Texture" id=1]
+[ext_resource path="res://textures/elemental fruit3.png" type="Texture" id=2]
+[ext_resource path="res://textures/elemental fruit1.png" type="Texture" id=3]
+[ext_resource path="res://scripts/ElementalFruit.cs" type="Script" id=4]
+[ext_resource path="res://textures/shadow.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ColourChange"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("White:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Blue:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 9.0
+height = 8.0
+
+[node name="ElementalFruit" type="Sprite"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, -12 )
+script = ExtResource( 4 )
+_area2DPath = NodePath("Area2D")
+
+[node name="White" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -12 )
+
+[node name="Blue" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.334599 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.25
+anims/ColourChange = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.6 )
+show_behind_parent = true
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -11 )
+shape = SubResource( 2 )
